@@ -2935,5 +2935,1387 @@ PLACE ORDER →
 </div>
 
 </div>
+  <!-- ================= NATURE'S UDYOG MASTER PATCH 2 ================= -->
+
+<script>
+
+(function(){
+
+/* ================= PRODUCT DATABASE ================= */
+
+const NU_PRODUCTS=[
+
+{
+id:"coconut",
+name:"Virgin Coconut Oil",
+price:250,
+image:"https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=85",
+desc:"Cold pressed virgin coconut oil, pure and natural, suitable for everyday natural care."
+},
+
+{
+id:"tulasi",
+name:"Tulasi Leaves Powder",
+price:120,
+image:"https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=900&q=85",
+desc:"Finely prepared tulasi leaf powder inspired by traditional Indian wellness practices."
+},
+
+{
+id:"neem-oil",
+name:"Neem Oil",
+price:120,
+image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=85",
+desc:"Natural neem oil suitable for traditional personal and household applications."
+},
+
+{
+id:"pippali",
+name:"Long Pepper / Pippali",
+price:180,
+image:"https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=85",
+desc:"Traditional long pepper, carefully selected for natural product use."
+},
+
+{
+id:"mix-seeds",
+name:"Mix Seeds",
+price:150,
+image:"https://images.unsplash.com/photo-1608797178974-15b35a64ede9?auto=format&fit=crop&w=900&q=85",
+desc:"A wholesome mix of seeds selected as an everyday nutrition option."
+},
+
+{
+id:"sabja",
+name:"Sabja Seeds",
+price:90,
+image:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=85",
+desc:"Natural sabja seeds, traditionally used in refreshing drinks and food."
+},
+
+{
+id:"neem-chhal",
+name:"Neem Chhal",
+price:60,
+image:"https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=85",
+desc:"Neem bark prepared for traditional natural applications."
+},
+
+{
+id:"epsom",
+name:"Epsom Salt",
+price:150,
+image:"https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=900&q=85",
+desc:"Magnesium sulfate crystals suitable for traditional wellness and care routines."
+},
+
+{
+id:"arogya",
+name:"Arogya Churna",
+price:450,
+image:"https://images.unsplash.com/photo-1608571423539-e951a8d2e3c6?auto=format&fit=crop&w=900&q=85",
+desc:"Traditional herbal churna positioned for diabetic support. Not a replacement for medical treatment."
+},
+
+{
+id:"vathar",
+name:"Vathar Churn Potli",
+price:0,
+image:"https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=85",
+desc:"Traditional herbal potli preparation inspired by natural wellness practices."
+},
+
+{
+id:"flax",
+name:"Flax Seeds",
+price:0,
+image:"https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=900&q=85",
+desc:"Natural flax seeds, a simple everyday nutrition ingredient."
+}
+
+];
+
+
+/* ================= STATE ================= */
+
+let nuCart=JSON.parse(
+localStorage.getItem("NU_CART")||"[]"
+);
+
+let nuFavorites=JSON.parse(
+localStorage.getItem("NU_FAV")||"[]"
+);
+
+let nuCurrentProduct=null;
+
+
+/* ================= HELPERS ================= */
+
+function nuProduct(id){
+
+return NU_PRODUCTS.find(
+p=>p.id===id
+);
+
+}
+
+
+function nuMoney(price){
+
+return price>0
+?"₹"+price
+:"Price on Enquiry";
+
+}
+
+
+function nuSave(){
+
+localStorage.setItem(
+"NU_CART",
+JSON.stringify(nuCart)
+);
+
+localStorage.setItem(
+"NU_FAV",
+JSON.stringify(nuFavorites)
+);
+
+}
+
+
+function nuCartCount(){
+
+return nuCart.reduce(
+(total,item)=>total+item.qty,
+0
+);
+
+}
+
+
+function nuCartTotal(){
+
+return nuCart.reduce(
+(total,item)=>{
+
+const p=nuProduct(item.id);
+
+return total+
+(p&&p.price?p.price*item.qty:0);
+
+},
+0
+);
+
+}
+
+
+/* ================= TOAST ================= */
+
+function nuToast(message){
+
+let old=document.getElementById(
+"NU_TOAST"
+);
+
+if(old)old.remove();
+
+const toast=document.createElement("div");
+
+toast.id="NU_TOAST";
+
+toast.textContent=message;
+
+toast.style.cssText=`
+position:fixed;
+left:50%;
+bottom:90px;
+transform:translateX(-50%);
+background:#183b27;
+color:white;
+padding:12px 19px;
+border-radius:30px;
+font-size:11px;
+z-index:100010;
+box-shadow:0 8px 30px rgba(0,0,0,.25);
+`;
+
+document.body.appendChild(toast);
+
+setTimeout(
+()=>toast.remove(),
+2200
+);
+
+}
+
+
+/* ================= CART ================= */
+
+function nuAdd(id){
+
+const p=nuProduct(id);
+
+if(!p)return;
+
+if(!p.price){
+
+nuOpenProduct(p);
+
+return;
+
+}
+
+const item=nuCart.find(
+x=>x.id===id
+);
+
+if(item){
+
+item.qty++;
+
+}else{
+
+nuCart.push({
+id:id,
+qty:1
+});
+
+}
+
+nuSave();
+
+nuRenderCart();
+
+nuToast(
+p.name+" added to cart"
+);
+
+}
+
+
+function nuChange(id,value){
+
+const item=nuCart.find(
+x=>x.id===id
+);
+
+if(!item)return;
+
+item.qty+=value;
+
+if(item.qty<=0){
+
+nuCart=nuCart.filter(
+x=>x.id!==id
+);
+
+}
+
+nuSave();
+
+nuRenderCart();
+
+}
+
+
+function nuRemove(id){
+
+nuCart=nuCart.filter(
+x=>x.id!==id
+);
+
+nuSave();
+
+nuRenderCart();
+
+}
+
+
+function nuRenderCart(){
+
+const box=document.getElementById(
+"NU_CART_ITEMS"
+);
+
+if(!box)return;
+
+document.getElementById(
+"NU_CART_COUNT"
+).textContent=nuCartCount();
+
+
+if(!nuCart.length){
+
+box.innerHTML=`
+
+<div style="
+text-align:center;
+padding:60px 15px;
+color:#687268;
+">
+
+<div style="
+font-size:45px;
+margin-bottom:12px;
+">
+🛒
+</div>
+
+<p>Your cart is empty.</p>
+
+<p style="
+font-size:11px;
+margin-top:5px;
+">
+Add natural products to continue.
+</p>
+
+</div>
+
+`;
+
+}else{
+
+box.innerHTML=nuCart.map(
+item=>{
+
+const p=nuProduct(item.id);
+
+return `
+
+<div class="nu-cart-item">
+
+<img
+src="${p.image}"
+alt="${p.name}"
+>
+
+<div class="nu-cart-info">
+
+<strong>
+${p.name}
+</strong>
+
+<div class="nu-cart-price">
+${nuMoney(p.price)}
+</div>
+
+<div class="nu-qty">
+
+<button
+type="button"
+data-minus="${p.id}"
+>
+−
+</button>
+
+<span>
+${item.qty}
+</span>
+
+<button
+type="button"
+data-plus="${p.id}"
+>
++
+</button>
+
+<button
+class="nu-remove"
+type="button"
+data-remove="${p.id}"
+>
+Remove
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+document.getElementById(
+"NU_TOTAL"
+).textContent=
+"₹"+nuCartTotal();
+
+}
+
+
+function nuOpenCart(){
+
+document.getElementById(
+"NU_DRAWER"
+).classList.add("open");
+
+document.getElementById(
+"NU_OVERLAY"
+).style.display="block";
+
+nuRenderCart();
+
+}
+
+
+function nuCloseCart(){
+
+document.getElementById(
+"NU_DRAWER"
+).classList.remove("open");
+
+document.getElementById(
+"NU_OVERLAY"
+).style.display="none";
+
+}
+
+
+/* ================= PRODUCT DETAILS ================= */
+
+function nuOpenProduct(p){
+
+if(!p)return;
+
+nuCurrentProduct=p;
+
+document.getElementById(
+"NU_DETAIL_IMG"
+).src=p.image;
+
+document.getElementById(
+"NU_DETAIL_NAME"
+).textContent=p.name;
+
+document.getElementById(
+"NU_DETAIL_PRICE"
+).textContent=
+nuMoney(p.price);
+
+document.getElementById(
+"NU_DETAIL_DESC"
+).textContent=p.desc;
+
+document.getElementById(
+"NU_DETAIL"
+).style.display="flex";
+
+}
+
+
+function nuCloseProduct(){
+
+document.getElementById(
+"NU_DETAIL"
+).style.display="none";
+
+nuCurrentProduct=null;
+
+}
+
+
+/* ================= FAVORITES ================= */
+
+function nuToggleFavorite(id){
+
+if(nuFavorites.includes(id)){
+
+nuFavorites=
+nuFavorites.filter(
+x=>x!==id
+);
+
+nuToast(
+"Removed from favorites"
+);
+
+}else{
+
+nuFavorites.push(id);
+
+nuToast(
+"Added to favorites"
+);
+
+}
+
+nuSave();
+
+nuRenderFavorites();
+
+}
+
+
+function nuRenderFavorites(){
+
+document.getElementById(
+"NU_FAV_COUNT"
+).textContent=
+nuFavorites.length;
+
+const box=document.getElementById(
+"NU_FAV_ITEMS"
+);
+
+if(!nuFavorites.length){
+
+box.innerHTML=`
+
+<div style="
+padding:50px 5px;
+text-align:center;
+color:#687268;
+">
+
+<div style="font-size:30px;">
+♡
+</div>
+
+<br>
+
+No favorites yet.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+box.innerHTML=nuFavorites.map(
+id=>{
+
+const p=nuProduct(id);
+
+return `
+
+<div class="nu-fav-card">
+
+<img
+src="${p.image}"
+alt="${p.name}"
+>
+
+<div style="flex:1">
+
+<strong style="
+font-size:13px;
+color:#183b27;
+">
+
+${p.name}
+
+</strong>
+
+<div style="
+font-size:12px;
+color:#9b5635;
+margin-top:5px;
+">
+
+${nuMoney(p.price)}
+
+</div>
+
+<button
+type="button"
+class="nu-view-btn"
+data-fav-view="${p.id}"
+>
+
+VIEW PRODUCT
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+).join("");
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function nuOpenSearch(){
+
+document.getElementById(
+"NU_SEARCH"
+).style.display="block";
+
+setTimeout(
+()=>document.getElementById(
+"NU_SEARCH_INPUT"
+).focus(),
+100
+);
+
+}
+
+
+function nuCloseSearch(){
+
+document.getElementById(
+"NU_SEARCH"
+).style.display="none";
+
+}
+
+
+function nuSearch(value){
+
+const result=document.getElementById(
+"NU_SEARCH_RESULTS"
+);
+
+const q=value
+.toLowerCase()
+.trim();
+
+if(!q){
+
+result.innerHTML="";
+
+return;
+
+}
+
+const found=NU_PRODUCTS.filter(
+p=>p.name
+.toLowerCase()
+.includes(q)
+);
+
+if(!found.length){
+
+result.innerHTML=`
+
+<div style="
+padding:30px;
+text-align:center;
+color:#777;
+">
+
+No products found.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+result.innerHTML=found.map(
+p=>`
+
+<div class="nu-search-result">
+
+<div>
+
+<strong style="
+font-size:13px;
+color:#183b27;
+">
+
+${p.name}
+
+</strong>
+
+<div style="
+font-size:11px;
+color:#9b5635;
+margin-top:4px;
+">
+
+${nuMoney(p.price)}
+
+</div>
+
+</div>
+
+<button
+type="button"
+data-search-product="${p.id}"
+>
+
+VIEW
+
+</button>
+
+</div>
+
+`
+).join("");
+
+}
+
+
+/* ================= WHATSAPP ================= */
+
+function nuWhatsAppProduct(p){
+
+if(!p)return;
+
+const message=
+`Hello Nature's Udyog,
+
+I want to enquire/order:
+
+Product: ${p.name}
+Price: ${nuMoney(p.price)}
+
+Please share availability and delivery details.`;
+
+window.open(
+"https://wa.me/917978819477?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function nuOpenCheckout(){
+
+if(!nuCart.length){
+
+nuToast(
+"Your cart is empty"
+);
+
+return;
+
+}
+
+nuCloseCart();
+
+document.getElementById(
+"NU_CHECKOUT"
+).style.display="flex";
+
+}
+
+
+function nuCloseCheckout(){
+
+document.getElementById(
+"NU_CHECKOUT"
+).style.display="none";
+
+}
+
+
+function nuPlaceOrder(){
+
+const name=
+document.getElementById(
+"NU_NAME"
+).value.trim();
+
+const phone=
+document.getElementById(
+"NU_PHONE"
+).value.trim();
+
+const address=
+document.getElementById(
+"NU_ADDRESS"
+).value.trim();
+
+if(!name||!phone||!address){
+
+alert(
+"Please fill your name, mobile number and address."
+);
+
+return;
+
+}
+
+const payment=
+document.querySelector(
+'input[name="nuPayment"]:checked'
+)?.value||"WhatsApp";
+
+
+let items="";
+
+nuCart.forEach(item=>{
+
+const p=nuProduct(item.id);
+
+items+=
+`${p.name} x ${item.qty} - ${nuMoney(p.price)}\n`;
+
+});
+
+
+const message=
+`Hello Nature's Udyog,
+
+NEW ORDER
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+Payment: ${payment}
+
+Products:
+${items}
+
+Total: ₹${nuCartTotal()}
+
+Please confirm my order.`;
+
+window.open(
+"https://wa.me/917978819477?text="+
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+
+/* ================= EVENT LISTENERS ================= */
+
+document.getElementById(
+"NU_FLOAT_CART"
+).addEventListener(
+"click",
+nuOpenCart
+);
+
+
+document.getElementById(
+"NU_CLOSE_CART"
+).addEventListener(
+"click",
+nuCloseCart
+);
+
+
+document.getElementById(
+"NU_OVERLAY"
+).addEventListener(
+"click",
+nuCloseCart
+);
+
+
+document.getElementById(
+"NU_DETAIL_CLOSE"
+).addEventListener(
+"click",
+nuCloseProduct
+);
+
+
+document.getElementById(
+"NU_CLOSE_SEARCH"
+).addEventListener(
+"click",
+nuCloseSearch
+);
+
+
+document.getElementById(
+"NU_SEARCH_INPUT"
+).addEventListener(
+"input",
+function(){
+
+nuSearch(this.value);
+
+}
+);
+
+
+document.getElementById(
+"NU_FAV"
+).addEventListener(
+"click",
+function(){
+
+nuRenderFavorites();
+
+document.getElementById(
+"NU_FAV_DRAWER"
+).style.display="flex";
+
+}
+);
+
+
+document.getElementById(
+"NU_FAV_CLOSE"
+).addEventListener(
+"click",
+function(){
+
+document.getElementById(
+"NU_FAV_DRAWER"
+).style.display="none";
+
+}
+);
+
+
+document.getElementById(
+"NU_CHECKOUT_OPEN"
+).addEventListener(
+"click",
+nuOpenCheckout
+);
+
+
+document.getElementById(
+"NU_CHECKOUT_CLOSE"
+).addEventListener(
+"click",
+nuCloseCheckout
+);
+
+
+document.getElementById(
+"NU_PLACE_ORDER"
+).addEventListener(
+"click",
+nuPlaceOrder
+);
+
+
+document.getElementById(
+"NU_DETAIL_ADD"
+).addEventListener(
+"click",
+function(){
+
+if(!nuCurrentProduct)return;
+
+if(nuCurrentProduct.price){
+
+nuAdd(nuCurrentProduct.id);
+
+}else{
+
+nuWhatsAppProduct(
+nuCurrentProduct
+);
+
+}
+
+}
+);
+
+
+document.getElementById(
+"NU_DETAIL_WA"
+).addEventListener(
+"click",
+function(){
+
+nuWhatsAppProduct(
+nuCurrentProduct
+);
+
+}
+);
+
+
+/* ================= CART ACTIONS ================= */
+
+document.addEventListener(
+"click",
+function(e){
+
+const plus=
+e.target.closest("[data-plus]");
+
+const minus=
+e.target.closest("[data-minus]");
+
+const remove=
+e.target.closest("[data-remove]");
+
+const search=
+e.target.closest(
+"[data-search-product]"
+);
+
+const favView=
+e.target.closest(
+"[data-fav-view]"
+);
+
+
+if(plus){
+
+nuChange(
+plus.dataset.plus,
+1
+);
+
+}
+
+
+if(minus){
+
+nuChange(
+minus.dataset.minus,
+-1
+);
+
+}
+
+
+if(remove){
+
+nuRemove(
+remove.dataset.remove
+);
+
+}
+
+
+if(search){
+
+const p=
+nuProduct(
+search.dataset.searchProduct
+);
+
+nuCloseSearch();
+
+if(p)nuOpenProduct(p);
+
+}
+
+
+if(favView){
+
+const p=
+nuProduct(
+favView.dataset.favView
+);
+
+if(p){
+
+document.getElementById(
+"NU_FAV_DRAWER"
+).style.display="none";
+
+nuOpenProduct(p);
+
+}
+
+}
+
+}
+);
+
+
+/* ================= EXISTING PRODUCT BUTTONS ================= */
+
+document.querySelectorAll(
+".product .add-btn"
+).forEach(
+(button,index)=>{
+
+button.type="button";
+
+button.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+const p=
+NU_PRODUCTS[index];
+
+if(p){
+
+nuAdd(p.id);
+
+}
+
+}
+);
+
+}
+);
+
+
+/* ================= PRODUCT CARD DETAILS ================= */
+
+document.querySelectorAll(
+".product"
+).forEach(
+(card,index)=>{
+
+const p=
+NU_PRODUCTS[index];
+
+if(!p)return;
+
+if(card.dataset.nuReady)
+return;
+
+card.dataset.nuReady="1";
+
+card.style.position="relative";
+
+
+const fav=
+document.createElement("button");
+
+fav.type="button";
+
+fav.innerHTML=
+nuFavorites.includes(p.id)
+?"♥"
+:"♡";
+
+fav.style.cssText=`
+position:absolute;
+top:10px;
+right:10px;
+width:34px;
+height:34px;
+border-radius:50%;
+border:0;
+background:rgba(255,255,255,.94);
+color:#9b5635;
+font-size:18px;
+z-index:10;
+`;
+
+card.appendChild(fav);
+
+
+fav.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+nuToggleFavorite(p.id);
+
+fav.innerHTML=
+nuFavorites.includes(p.id)
+?"♥"
+:"♡";
+
+}
+);
+
+
+const info=
+card.querySelector(
+".product-info"
+);
+
+if(info){
+
+const view=
+document.createElement(
+"button"
+);
+
+view.type="button";
+
+view.className=
+"nu-view-btn";
+
+view.textContent=
+"VIEW DETAILS";
+
+view.addEventListener(
+"click",
+function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+nuOpenProduct(p);
+
+}
+);
+
+info.appendChild(view);
+
+}
+
+}
+);
+
+
+/* ================= INITIAL LOAD ================= */
+
+nuRenderCart();
+
+nuRenderFavorites();
+
+
+/* ================= HERO VIDEO ================= */
+
+const heroVideo=
+document.querySelector(
+".hero video"
+);
+
+if(heroVideo){
+
+heroVideo.muted=true;
+
+heroVideo.setAttribute(
+"muted",
+""
+);
+
+heroVideo.setAttribute(
+"playsinline",
+""
+);
+
+heroVideo.setAttribute(
+"autoplay",
+""
+);
+
+heroVideo.setAttribute(
+"loop",
+""
+);
+
+heroVideo.play().catch(
+()=>{}
+);
+
+}
+
+
+/* ================= STORY BUTTON ================= */
+
+document.querySelectorAll(
+"button"
+).forEach(
+btn=>{
+
+if(
+btn.innerText &&
+btn.innerText
+.toUpperCase()
+.includes(
+"DISCOVER OUR STORY"
+)
+){
+
+btn.addEventListener(
+"click",
+function(){
+
+document.getElementById(
+"about"
+)?.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+);
+
+}
+
+}
+);
+
+
+/* ================= NAV SEARCH / HEART / CART ================= */
+
+document.querySelectorAll(
+".nav button"
+).forEach(
+btn=>{
+
+const text=
+(btn.innerText||"")
+.trim();
+
+
+if(
+text.includes("⌕")||
+text.includes("🔍")
+){
+
+btn.addEventListener(
+"click",
+nuOpenSearch
+);
+
+}
+
+
+if(
+text.includes("♡")||
+text.includes("♥")
+){
+
+btn.addEventListener(
+"click",
+function(){
+
+nuRenderFavorites();
+
+document.getElementById(
+"NU_FAV_DRAWER"
+).style.display="flex";
+
+}
+);
+
+}
+
+
+if(
+text.includes("🛒")
+){
+
+btn.addEventListener(
+"click",
+nuOpenCart
+);
+
+}
+
+}
+);
+
+})();
+
+</script>
+
+<!-- ================= END MASTER PATCH 2 ================= -->
 </body>
 </html>
