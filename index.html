@@ -2167,6 +2167,773 @@ document.querySelectorAll("img").forEach(function(img){
 });
 
 </script>
+<!-- ================= NATURE'S UDYOG MASTER PATCH 1 ================= -->
 
+<style>
+
+#NU_FLOAT_CART{
+position:fixed;
+right:16px;
+bottom:18px;
+width:56px;
+height:56px;
+border-radius:50%;
+border:0;
+background:#183b27;
+color:#fff;
+z-index:99990;
+font-size:21px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+#NU_FLOAT_CART span{
+position:absolute;
+right:-3px;
+top:-4px;
+background:#b49355;
+color:#fff;
+font-size:10px;
+min-width:19px;
+height:19px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+#NU_FAV{
+position:fixed;
+right:16px;
+bottom:86px;
+width:48px;
+height:48px;
+border-radius:50%;
+background:#fff;
+border:1px solid #ddd8ca;
+z-index:99980;
+font-size:19px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+#NU_FAV span{
+position:absolute;
+right:-3px;
+top:-3px;
+background:#9b5635;
+color:#fff;
+font-size:9px;
+min-width:17px;
+height:17px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+#NU_OVERLAY{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+z-index:99991;
+display:none;
+}
+
+#NU_DRAWER{
+position:fixed;
+right:0;
+top:0;
+width:min(420px,94vw);
+height:100vh;
+background:#f8f7f2;
+z-index:99992;
+transform:translateX(110%);
+transition:.35s ease;
+box-shadow:-10px 0 40px rgba(0,0,0,.2);
+display:flex;
+flex-direction:column;
+}
+
+#NU_DRAWER.open{
+transform:translateX(0);
+}
+
+.nu-drawer-head{
+padding:20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #ddd8ca;
+}
+
+.nu-drawer-head h3{
+font-family:'Playfair Display',serif;
+font-size:24px;
+color:#183b27;
+}
+
+.nu-close{
+border:0;
+background:none;
+font-size:25px;
+color:#183b27;
+}
+
+#NU_CART_ITEMS{
+padding:15px;
+overflow:auto;
+flex:1;
+}
+
+.nu-cart-item{
+display:flex;
+gap:12px;
+padding:13px 0;
+border-bottom:1px solid #ddd8ca;
+}
+
+.nu-cart-item img{
+width:72px;
+height:72px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.nu-cart-info{
+flex:1;
+}
+
+.nu-cart-info strong{
+display:block;
+font-size:13px;
+color:#183b27;
+}
+
+.nu-cart-price{
+font-size:12px;
+margin-top:5px;
+color:#9b5635;
+}
+
+.nu-qty{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:8px;
+}
+
+.nu-qty button{
+width:25px;
+height:25px;
+border:1px solid #cfc8b7;
+background:#fff;
+border-radius:4px;
+}
+
+.nu-remove{
+border:0;
+background:none;
+font-size:11px;
+color:#a33;
+margin-left:8px;
+}
+
+.nu-cart-bottom{
+padding:18px;
+border-top:1px solid #ddd8ca;
+background:#fff;
+}
+
+.nu-total{
+display:flex;
+justify-content:space-between;
+font-weight:700;
+font-size:16px;
+margin-bottom:12px;
+}
+
+.nu-main-btn{
+width:100%;
+border:0;
+padding:14px;
+background:#183b27;
+color:#fff;
+font-weight:700;
+letter-spacing:.4px;
+}
+
+#NU_SEARCH{
+position:fixed;
+inset:0;
+background:rgba(248,247,242,.98);
+z-index:100000;
+display:none;
+padding:25px;
+overflow:auto;
+}
+
+.nu-search-box{
+max-width:700px;
+margin:60px auto 0;
+}
+
+.nu-search-box input{
+width:100%;
+padding:17px;
+border:1px solid #cfc8b7;
+background:#fff;
+outline:none;
+font-size:15px;
+}
+
+#NU_SEARCH_RESULTS{
+margin-top:20px;
+display:grid;
+gap:10px;
+}
+
+.nu-search-result{
+padding:14px;
+background:#fff;
+border:1px solid #e0dccf;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.nu-search-result button{
+border:0;
+background:#183b27;
+color:#fff;
+padding:8px 12px;
+font-size:10px;
+}
+
+#NU_DETAIL{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.58);
+z-index:100001;
+display:none;
+align-items:flex-end;
+justify-content:center;
+}
+
+.nu-detail-box{
+width:min(900px,100%);
+max-height:92vh;
+overflow:auto;
+background:#f8f7f2;
+border-radius:22px 22px 0 0;
+position:relative;
+}
+
+.nu-detail-close{
+position:absolute;
+right:16px;
+top:14px;
+z-index:4;
+width:36px;
+height:36px;
+border:0;
+border-radius:50%;
+background:#fff;
+font-size:20px;
+}
+
+.nu-detail-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.nu-detail-image{
+height:430px;
+background:#eee;
+}
+
+.nu-detail-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.nu-detail-content{
+padding:35px;
+}
+
+.nu-detail-content small{
+font-size:9px;
+letter-spacing:2px;
+color:#9b5635;
+}
+
+.nu-detail-content h2{
+font-family:'Playfair Display',serif;
+font-size:34px;
+color:#183b27;
+margin:10px 0;
+}
+
+.nu-detail-content p{
+font-size:13px;
+line-height:1.7;
+color:#59645b;
+}
+
+.nu-detail-price{
+font-size:22px;
+font-weight:700;
+color:#9b5635;
+margin:18px 0;
+}
+
+.nu-detail-actions{
+display:grid;
+gap:10px;
+}
+
+.nu-detail-actions button{
+padding:14px;
+border:0;
+font-weight:700;
+}
+
+.nu-add-detail{
+background:#183b27;
+color:#fff;
+}
+
+.nu-wa-detail{
+background:#25D366;
+color:#fff;
+}
+
+#NU_FAV_DRAWER{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:100003;
+display:none;
+align-items:flex-end;
+}
+
+.nu-fav-box{
+width:min(600px,100%);
+max-height:85vh;
+overflow:auto;
+background:#f8f7f2;
+border-radius:22px 22px 0 0;
+padding:25px;
+}
+
+.nu-fav-card{
+display:flex;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #ddd8ca;
+}
+
+.nu-fav-card img{
+width:65px;
+height:65px;
+object-fit:cover;
+border-radius:7px;
+}
+
+#NU_CHECKOUT{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.65);
+z-index:100004;
+display:none;
+align-items:flex-end;
+}
+
+.nu-checkout-box{
+width:min(600px,100%);
+max-height:92vh;
+overflow:auto;
+background:#f8f7f2;
+border-radius:22px 22px 0 0;
+padding:25px;
+}
+
+.nu-checkout-box h2{
+font-family:'Playfair Display',serif;
+color:#183b27;
+margin-bottom:18px;
+}
+
+.nu-field{
+width:100%;
+padding:13px;
+margin-bottom:10px;
+border:1px solid #d6d0c1;
+background:#fff;
+outline:none;
+}
+
+.nu-payment{
+display:grid;
+gap:8px;
+margin:12px 0 18px;
+}
+
+.nu-payment label{
+padding:13px;
+background:#fff;
+border:1px solid #ddd8ca;
+font-size:12px;
+}
+
+.nu-payment input{
+margin-right:8px;
+}
+
+.nu-view-btn{
+margin-top:8px;
+width:100%;
+padding:10px;
+border:1px solid #183b27;
+background:transparent;
+color:#183b27;
+font-size:10px;
+font-weight:700;
+}
+
+@media(max-width:650px){
+
+.nu-detail-grid{
+grid-template-columns:1fr;
+}
+
+.nu-detail-image{
+height:300px;
+}
+
+.nu-detail-content{
+padding:25px;
+}
+
+.nu-detail-content h2{
+font-size:29px;
+}
+
+#NU_SEARCH{
+padding:18px;
+}
+
+.nu-search-box{
+margin-top:40px;
+}
+
+}
+
+@media(min-width:651px){
+
+#NU_DETAIL{
+align-items:center;
+}
+
+.nu-detail-box{
+border-radius:18px;
+}
+
+}
+
+</style>
+
+
+<!-- FLOATING CART -->
+
+<button id="NU_FLOAT_CART" type="button">
+🛒
+<span id="NU_CART_COUNT">0</span>
+</button>
+
+
+<!-- FAVORITES -->
+
+<button id="NU_FAV" type="button">
+♡
+<span id="NU_FAV_COUNT">0</span>
+</button>
+
+
+<!-- CART OVERLAY -->
+
+<div id="NU_OVERLAY"></div>
+
+
+<!-- CART DRAWER -->
+
+<div id="NU_DRAWER">
+
+<div class="nu-drawer-head">
+
+<h3>Your Cart</h3>
+
+<button
+class="nu-close"
+id="NU_CLOSE_CART"
+type="button">
+×
+</button>
+
+</div>
+
+
+<div id="NU_CART_ITEMS"></div>
+
+
+<div class="nu-cart-bottom">
+
+<div class="nu-total">
+
+<span>Total</span>
+
+<span id="NU_TOTAL">₹0</span>
+
+</div>
+
+
+<button
+class="nu-main-btn"
+id="NU_CHECKOUT_OPEN"
+type="button">
+
+PROCEED TO CHECKOUT →
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div id="NU_SEARCH">
+
+<button
+class="nu-close"
+id="NU_CLOSE_SEARCH"
+type="button">
+×
+</button>
+
+
+<div class="nu-search-box">
+
+<input
+id="NU_SEARCH_INPUT"
+type="search"
+placeholder="Search natural products..."
+autocomplete="off">
+
+
+<div id="NU_SEARCH_RESULTS"></div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT DETAIL -->
+
+<div id="NU_DETAIL">
+
+<div class="nu-detail-box">
+
+<button
+class="nu-detail-close"
+id="NU_DETAIL_CLOSE"
+type="button">
+×
+</button>
+
+
+<div class="nu-detail-grid">
+
+<div class="nu-detail-image">
+
+<img
+id="NU_DETAIL_IMG"
+src=""
+alt="Product">
+
+</div>
+
+
+<div class="nu-detail-content">
+
+<small>NATURE'S UDYOG</small>
+
+<h2 id="NU_DETAIL_NAME"></h2>
+
+<div
+class="nu-detail-price"
+id="NU_DETAIL_PRICE">
+</div>
+
+
+<p id="NU_DETAIL_DESC"></p>
+
+
+<div class="nu-detail-actions">
+
+<button
+class="nu-add-detail"
+id="NU_DETAIL_ADD"
+type="button">
+
+ADD TO CART
+
+</button>
+
+
+<button
+class="nu-wa-detail"
+id="NU_DETAIL_WA"
+type="button">
+
+ORDER ON WHATSAPP
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FAVORITES -->
+
+<div id="NU_FAV_DRAWER">
+
+<div class="nu-fav-box">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+<h2 style="font-family:'Playfair Display',serif;color:#183b27;">
+My Favorites
+</h2>
+
+
+<button
+class="nu-close"
+id="NU_FAV_CLOSE"
+type="button">
+×
+</button>
+
+</div>
+
+
+<div id="NU_FAV_ITEMS"></div>
+
+</div>
+
+</div>
+
+
+<!-- CHECKOUT -->
+
+<div id="NU_CHECKOUT">
+
+<div class="nu-checkout-box">
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+
+<h2>Checkout</h2>
+
+
+<button
+class="nu-close"
+id="NU_CHECKOUT_CLOSE"
+type="button">
+×
+</button>
+
+</div>
+
+
+<input
+class="nu-field"
+id="NU_NAME"
+placeholder="Your Name">
+
+
+<input
+class="nu-field"
+id="NU_PHONE"
+placeholder="Mobile Number"
+type="tel">
+
+
+<textarea
+class="nu-field"
+id="NU_ADDRESS"
+placeholder="Delivery Address"
+rows="3"></textarea>
+
+
+<div class="nu-payment">
+
+<label>
+
+<input
+type="radio"
+name="nuPayment"
+value="WhatsApp"
+checked>
+
+WhatsApp Order
+
+</label>
+
+
+<label>
+
+<input
+type="radio"
+name="nuPayment"
+value="UPI">
+
+UPI Payment
+
+</label>
+
+
+<label>
+
+<input
+type="radio"
+name="nuPayment"
+value="COD">
+
+Cash on Delivery
+
+</label>
+
+</div>
+
+
+<button
+class="nu-main-btn"
+id="NU_PLACE_ORDER"
+type="button">
+
+PLACE ORDER →
+
+</button>
+
+</div>
+
+</div>
 </body>
 </html>
