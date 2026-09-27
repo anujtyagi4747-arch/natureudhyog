@@ -538,3 +538,521 @@ button{
   </div>
 
   <div class="product-grid">
+<style>
+
+.product{
+  background:#f8f7f2;
+  overflow:hidden;
+  position:relative;
+}
+
+.product-img{
+  height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eee9da;
+}
+
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.product-info{
+  padding:17px;
+}
+
+.product-info small{
+  color:var(--brown);
+  font-size:8px;
+  letter-spacing:1px;
+}
+
+.product-info h3{
+  margin-top:6px;
+  font-family:'Playfair Display',serif;
+  font-size:19px;
+  color:var(--green);
+}
+
+.product-info p{
+  margin-top:7px;
+  color:#777;
+  font-size:10px;
+  line-height:1.5;
+}
+
+.product-row{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.product-row b{
+  color:var(--green);
+  font-size:16px;
+}
+
+.add-btn{
+  border:0;
+  background:var(--green);
+  color:white;
+  padding:10px 13px;
+  font-size:9px;
+  border-radius:2px;
+}
+
+@media(max-width:700px){
+
+  .product-img{
+    height:190px;
+  }
+
+  .product-info{
+    padding:13px;
+  }
+
+  .product-info h3{
+    font-size:16px;
+  }
+
+  .product-info p{
+    font-size:9px;
+  }
+
+  .product-row b{
+    font-size:14px;
+  }
+
+  .add-btn{
+    padding:9px 10px;
+  }
+
+}
+
+</style>
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1608571423539-e951a9d4d8d6?auto=format&fit=crop&w=700&q=85"
+      alt="Virgin Coconut Oil">
+  </div>
+
+  <div class="product-info">
+
+    <small>NATURAL OILS</small>
+
+    <h3>Virgin Coconut Oil</h3>
+
+    <p>
+      Cold pressed coconut oil with
+      a naturally simple character.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹250</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1611073762000-4c9c6f2c5a3a?auto=format&fit=crop&w=700&q=85"
+      alt="Tulasi Leaves Powder">
+  </div>
+
+  <div class="product-info">
+
+    <small>HERBAL POWDERS</small>
+
+    <h3>Tulasi Leaves Powder</h3>
+
+    <p>
+      Carefully selected tulasi leaves
+      in a convenient powdered form.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹120</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=700&q=85"
+      alt="Neem Oil">
+  </div>
+
+  <div class="product-info">
+
+    <small>NATURAL OILS</small>
+
+    <h3>Neem Oil</h3>
+
+    <p>
+      Traditional neem oil selected
+      for our natural product collection.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹120</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1509358273864-9a9e9e5f7d1a?auto=format&fit=crop&w=700&q=85"
+      alt="Long Pepper">
+  </div>
+
+  <div class="product-info">
+
+    <small>HERBAL ESSENTIALS</small>
+
+    <h3>Long Pepper</h3>
+
+    <p>
+      Traditional Indian long pepper,
+      carefully selected for our collection.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹180</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=700&q=85"
+      alt="Mix Seeds">
+  </div>
+
+  <div class="product-info">
+
+    <small>SEEDS & NUTRITION</small>
+
+    <h3>Mix Seeds</h3>
+
+    <p>
+      A thoughtfully selected mix of
+      nutritious everyday seeds.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹150</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1603905179139-db12ab535c8b?auto=format&fit=crop&w=700&q=85"
+      alt="Sabja Seeds">
+  </div>
+
+  <div class="product-info">
+
+    <small>SEEDS & NUTRITION</small>
+
+    <h3>Sabja Seeds</h3>
+
+    <p>
+      Selected sabja seeds for
+      refreshing everyday use.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹90</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=700&q=85"
+      alt="Neem Chhal">
+  </div>
+
+  <div class="product-info">
+
+    <small>HERBAL ESSENTIALS</small>
+
+    <h3>Neem Chhal</h3>
+
+    <p>
+      Carefully selected neem bark
+      from our natural collection.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹60</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1611073762000-4c9c6f2c5a3a?auto=format&fit=crop&w=700&q=85"
+      alt="Epsom Salt">
+  </div>
+
+  <div class="product-info">
+
+    <small>NATURAL ESSENTIALS</small>
+
+    <h3>Epsom Salt</h3>
+
+    <p>
+      Magnesium sulfate crystals
+      for everyday wellness routines.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹150</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+<article class="product">
+
+  <div class="product-img">
+    <img
+      src="https://images.unsplash.com/photo-1596097635121-14b63e7f7f9b?auto=format&fit=crop&w=700&q=85"
+      alt="Arogya Churna">
+  </div>
+
+  <div class="product-info">
+
+    <small>HERBAL POWDERS</small>
+
+    <h3>Arogya Churna</h3>
+
+    <p>
+      A traditional herbal powder
+      for everyday dietary support.
+    </p>
+
+    <div class="product-row">
+
+      <b>₹450</b>
+
+      <button class="add-btn">
+        ADD +
+      </button>
+
+    </div>
+
+  </div>
+
+</article>
+
+
+</div>
+
+</section>
+<style>
+
+.featured{
+  margin:10px 5% 70px;
+  min-height:390px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  background:#263d2b;
+}
+
+.featured img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.featured::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(18,59,39,.9),
+    rgba(18,59,39,.25)
+  );
+}
+
+.featured-content{
+  position:relative;
+  z-index:2;
+  padding:45px;
+  max-width:560px;
+  color:#fff;
+}
+
+.featured-content small{
+  font-size:9px;
+  letter-spacing:2px;
+  color:#e1c987;
+}
+
+.featured-content h2{
+  margin-top:10px;
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  line-height:1.05;
+}
+
+.featured-content p{
+  margin-top:14px;
+  color:#e9eee9;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.featured-content button{
+  margin-top:22px;
+  border:0;
+  padding:13px 20px;
+  background:#fff;
+  color:var(--green);
+  font-size:10px;
+  font-weight:700;
+}
+
+@media(max-width:600px){
+
+  .featured{
+    margin:5px 18px 55px;
+    min-height:430px;
+  }
+
+  .featured-content{
+    padding:28px;
+  }
+
+  .featured-content h2{
+    font-size:34px;
+  }
+
+}
+
+</style>
+
+<section class="featured">
+
+  <img
+    src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1400&q=85"
+    alt="Natural herbs">
+
+  <div class="featured-content">
+
+    <small>
+      THE NATURE'S UDYOG WAY
+    </small>
+
+    <h2>
+      Nature belongs<br>
+      in everyday life.
+    </h2>
+
+    <p>
+      Inspired by India's rich tradition of
+      natural ingredients, we bring together
+      simple products with thoughtful care.
+    </p>
+
+    <button>
+      DISCOVER OUR STORY →
+    </button>
+
+  </div>
+
+</section>
