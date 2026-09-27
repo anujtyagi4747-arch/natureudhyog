@@ -3,11 +3,19 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Nature's Udyog</title>
+<title>Nature's Udyog | Natural Products</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -17,10 +25,37 @@ content="width=device-width, initial-scale=1.0">
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  background:#f7f7f0;
-  color:#123d27;
+  background:#f8f7f2;
+  color:#183b27;
+  font-family:'DM Sans',sans-serif;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+button,
+a{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+:root{
+  --green:#183b27;
+  --light:#f8f7f2;
+  --cream:#eee9da;
+  --gold:#b49355;
+  --brown:#9b5635;
+  --text:#26372c;
 }
 
 </style>
@@ -28,801 +63,478 @@ body{
 </head>
 
 <body>
-<style>
+  <style>
 
-header{
-  width:100%;
-  padding:18px 5%;
+.topbar{
+  background:var(--green);
+  color:#fff;
+  text-align:center;
+  padding:9px 12px;
+  font-size:10px;
+  letter-spacing:.8px;
+}
+
+.nav{
+  height:70px;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:#fff;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 5px 20px rgba(0,0,0,.06);
+  padding:0 5%;
+  border-bottom:1px solid #e7e4da;
+  position:relative;
+  z-index:20;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:800;
-  color:#123d27;
+.brand{
+  color:var(--green);
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  font-weight:700;
 }
 
-.logo span{
-  color:#a94d2b;
+.brand span{
+  color:var(--brown);
 }
 
-.menu{
+.nav-icons{
   display:flex;
-  gap:22px;
+  align-items:center;
+  gap:14px;
 }
 
-.menu a{
-  text-decoration:none;
-  color:#123d27;
-  font-size:13px;
-}
-
-.cart-btn{
+.nav-btn{
   border:0;
-  background:#123d27;
-  color:#fff;
-  padding:10px 15px;
-  border-radius:12px;
+  background:none;
+  font-size:19px;
+  color:var(--green);
+}
+
+@media(max-width:600px){
+
+  .topbar{
+    font-size:9px;
+    padding:8px;
+  }
+
+  .nav{
+    height:62px;
+    padding:0 18px;
+  }
+
+  .brand{
+    font-size:20px;
+  }
+
+  .nav-icons{
+    gap:10px;
+  }
+
 }
 
 </style>
 
-<header>
+<div class="topbar">
+  FREE SHIPPING ON SELECTED ORDERS •
+  PURE PRODUCTS, THOUGHTFULLY MADE
+</div>
 
-  <div class="logo">
+<header class="nav">
+
+  <div class="brand">
     Nature's <span>Udyog</span>
   </div>
 
-  <nav class="menu">
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-  </nav>
+  <div class="nav-icons">
 
-  <button class="cart-btn">
-    🛒 Cart
-  </button>
+    <button class="nav-btn">
+      ⌕
+    </button>
+
+    <button class="nav-btn">
+      ♡
+    </button>
+
+    <button class="nav-btn">
+      🛒
+    </button>
+
+  </div>
 
 </header>
 <style>
 
 .hero{
-  min-height:85vh;
-  padding:80px 7%;
+  min-height:72vh;
+  position:relative;
+  overflow:hidden;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
+  background:#243b28;
+}
+
+.hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
   background:
     linear-gradient(
-      135deg,
-      #edf5e5,
-      #fffaf1
+      180deg,
+      rgba(0,0,0,.08),
+      rgba(0,0,0,.68)
     );
 }
 
 .hero-content{
+  position:relative;
+  z-index:2;
+  padding:45px 6% 55px;
+  color:white;
   max-width:650px;
 }
 
-.hero small{
-  color:#a94d2b;
-  font-weight:800;
-  letter-spacing:2px;
+.hero-tag{
   font-size:10px;
+  letter-spacing:2px;
+  font-weight:700;
 }
 
 .hero h1{
-  margin-top:15px;
-  font-family:Georgia,serif;
-  font-size:clamp(45px,8vw,78px);
-  line-height:1;
-  color:#092719;
-}
-
-.hero h1 span{
-  color:#a94d2b;
+  margin-top:12px;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,11vw,76px);
+  line-height:.98;
 }
 
 .hero p{
-  margin-top:22px;
-  color:#68736b;
-  font-size:15px;
-  line-height:1.8;
+  margin-top:18px;
+  max-width:450px;
+  font-size:13px;
+  line-height:1.7;
+  color:#f1eee5;
 }
 
 .hero-btn{
-  margin-top:28px;
+  margin-top:24px;
   padding:14px 22px;
   border:0;
-  border-radius:14px;
-  background:#123d27;
-  color:white;
-  font-weight:bold;
+  border-radius:3px;
+  background:#fff;
+  color:var(--green);
+  font-weight:700;
+  font-size:11px;
+}
+
+@media(max-width:600px){
+
+  .hero{
+    min-height:76vh;
+  }
+
+  .hero-content{
+    padding:30px 20px 38px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .hero p{
+    font-size:12px;
+  }
+
 }
 
 </style>
 
-<section class="hero" id="home">
+<section class="hero">
+
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=1200&q=85">
+
+    <source
+      src="https://cdn.coverr.co/videos/coverr-a-woman-harvesting-herbs-1577/1080p.mp4"
+      type="video/mp4">
+
+  </video>
 
   <div class="hero-content">
 
-    <small>
-      NATURAL PRODUCTS • ODISHA
-    </small>
+    <div class="hero-tag">
+      NATURAL • INDIAN • THOUGHTFULLY MADE
+    </div>
 
     <h1>
-      Pure from<br>
-      <span>Nature.</span>
+      Back to<br>
+      Nature.
     </h1>
 
     <p>
-      Natural products, thoughtfully prepared
-      for a better everyday lifestyle.
+      Discover thoughtfully selected natural
+      products inspired by India's timeless
+      connection with nature.
     </p>
 
     <button class="hero-btn">
-      Explore Products →
+      SHOP THE COLLECTION →
     </button>
 
   </div>
 
 </section>
-<section class="intro">
-
 <style>
 
-.intro{
-  padding:70px 7%;
+.categories{
+  padding:55px 5%;
+  background:#f8f7f2;
+}
+
+.cat-head{
   text-align:center;
-  background:#fff;
+  margin-bottom:28px;
 }
 
-.intro h2{
-  font-family:Georgia,serif;
-  font-size:38px;
-  color:#092719;
-}
-
-.intro h2 span{
-  color:#a94d2b;
-}
-
-.intro p{
-  max-width:650px;
-  margin:15px auto 0;
-  color:#707970;
-  line-height:1.8;
-  font-size:14px;
-}
-
-</style>
-
-<h2>
-  From <span>Nature</span> to You
-</h2>
-
-<p>
-  Discover thoughtfully selected natural products
-  made with simplicity, care and a connection
-  to everyday wellness.
-</p>
-
-</section>
-<section id="products">
-
-<style>
-
-.products{
-  padding:70px 6%;
-  background:#f7f7f0;
-}
-
-.products-head{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.products-head small{
-  color:#a94d2b;
-  font-size:10px;
-  font-weight:bold;
+.cat-head small{
+  color:var(--brown);
+  font-size:9px;
   letter-spacing:2px;
+  font-weight:700;
 }
 
-.products-head h2{
-  margin-top:10px;
-  font-family:Georgia,serif;
-  font-size:40px;
-  color:#092719;
+.cat-head h2{
+  margin-top:8px;
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  color:var(--green);
 }
 
-.products-head p{
-  margin-top:10px;
-  color:#707970;
-  font-size:13px;
-}
-
-</style>
-
-<div class="products">
-
-  <div class="products-head">
-
-    <small>
-      OUR COLLECTION
-    </small>
-
-    <h2>
-      Natural Essentials
-    </h2>
-
-    <p>
-      Explore our carefully selected products.
-    </p>
-
-  </div>
-
-</div>
-
-</section>
-<style>
-
-.product-grid{
+.cat-grid{
   display:grid;
   grid-template-columns:
-  repeat(3,1fr);
-  gap:20px;
-  max-width:1150px;
+  repeat(4,1fr);
+  gap:12px;
+  max-width:1100px;
   margin:auto;
 }
 
-.product-card{
-  background:#fff;
-  border-radius:22px;
+.cat{
+  min-height:145px;
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
   padding:18px;
-  border:1px solid #e3e9df;
-  transition:.3s;
-}
-
-.product-card:hover{
-  transform:translateY(-6px);
-}
-
-.product-img{
-  height:210px;
-  border-radius:18px;
-  background:#e8f0dd;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:75px;
-}
-
-.product-card h3{
-  margin-top:18px;
-  color:#123d27;
-  font-size:18px;
-}
-
-.product-card p{
-  margin-top:7px;
-  color:#7a827b;
-  font-size:12px;
-  line-height:1.6;
-}
-
-.product-bottom{
-  margin-top:18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.product-price{
-  color:#a94d2b;
-  font-weight:bold;
-  font-size:18px;
-}
-
-.product-add{
-  border:0;
-  background:#123d27;
   color:white;
-  padding:10px 13px;
-  border-radius:11px;
-  font-size:11px;
+  background-size:cover;
+  background-position:center;
+}
+
+.cat::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    transparent,
+    rgba(0,0,0,.65)
+  );
+}
+
+.cat span{
+  position:relative;
+  z-index:2;
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+}
+
+.cat:nth-child(1){
+  background-image:
+  url("https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=600&q=80");
+}
+
+.cat:nth-child(2){
+  background-image:
+  url("https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80");
+}
+
+.cat:nth-child(3){
+  background-image:
+  url("https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=600&q=80");
+}
+
+.cat:nth-child(4){
+  background-image:
+  url("https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=600&q=80");
 }
 
 @media(max-width:700px){
 
-  .product-grid{
-    grid-template-columns:1fr;
+  .categories{
+    padding:45px 18px;
+  }
+
+  .cat-grid{
+    grid-template-columns:
+    repeat(2,1fr);
+    gap:9px;
+  }
+
+  .cat{
+    min-height:125px;
+  }
+
+  .cat span{
+    font-size:16px;
   }
 
 }
 
 </style>
 
-<div class="product-grid">
+<section class="categories">
 
-  <div class="product-card">
+  <div class="cat-head">
 
-    <div class="product-img">🌿</div>
+    <small>
+      EXPLORE OUR WORLD
+    </small>
 
-    <h3>Tulasi Leaves Powder</h3>
-
-    <p>
-      Carefully selected tulasi leaves
-      in convenient powdered form.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹120</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
+    <h2>
+      Shop by Category
+    </h2>
 
   </div>
 
-</div>
-<div class="product-grid">
+  <div class="cat-grid">
 
-  <div class="product-card">
+    <div class="cat">
+      <span>Herbal Powders</span>
+    </div>
 
-    <div class="product-img">🧂</div>
+    <div class="cat">
+      <span>Natural Oils</span>
+    </div>
 
-    <h3>Epsom Salt</h3>
+    <div class="cat">
+      <span>Seeds & Nutrition</span>
+    </div>
 
-    <p>
-      Magnesium sulfate crystals
-      for everyday wellness routines.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹150</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
+    <div class="cat">
+      <span>Natural Essentials</span>
     </div>
 
   </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🥥</div>
-
-    <h3>Virgin Coconut Oil</h3>
-
-    <p>
-      Cold pressed coconut oil with
-      a simple, natural product profile.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹250</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🌿</div>
-
-    <h3>Neem Oil</h3>
-
-    <p>
-      Traditional neem oil prepared
-      for versatile everyday use.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹120</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-<div class="product-grid">
-
-  <div class="product-card">
-
-    <div class="product-img">🌶️</div>
-
-    <h3>Long Pepper</h3>
-
-    <p>
-      Traditional long pepper,
-      carefully selected for our collection.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹180</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🌿</div>
-
-    <h3>Arogya Churna</h3>
-
-    <p>
-      A traditional herbal powder
-      formulated for everyday support.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹450</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🌱</div>
-
-    <h3>Vathar Churn Potli</h3>
-
-    <p>
-      Traditional herbal potli prepared
-      for wellness routines.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹399</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-<div class="product-grid">
-
-  <div class="product-card">
-
-    <div class="product-img">🌻</div>
-
-    <h3>Mix Seeds</h3>
-
-    <p>
-      A wholesome mix of selected
-      seeds for everyday nutrition.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹150</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🍃</div>
-
-    <h3>Neem Chhal</h3>
-
-    <p>
-      Carefully selected neem bark
-      from our natural collection.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹60</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="product-card">
-
-    <div class="product-img">🌱</div>
-
-    <h3>Sabja Seeds</h3>
-
-    <p>
-      Selected sabja seeds for
-      refreshing everyday use.
-    </p>
-
-    <div class="product-bottom">
-
-      <span class="product-price">₹90</span>
-
-      <button class="product-add">
-        Add to Cart
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
 
 </section>
-  <section class="about-box" id="about">
-
 <style>
 
-.about-box{
-  padding:75px 7%;
-  background:#123d27;
-  color:white;
+.shop{
+  padding:65px 5%;
+  background:#fff;
 }
 
-.about-inner{
-  max-width:950px;
+.shop-head{
+  max-width:1100px;
   margin:auto;
-  text-align:center;
-}
-
-.about-inner small{
-  color:#d8c48a;
-  letter-spacing:2px;
-  font-size:10px;
-  font-weight:bold;
-}
-
-.about-inner h2{
-  margin-top:12px;
-  font-family:Georgia,serif;
-  font-size:40px;
-}
-
-.about-inner p{
-  margin:18px auto 0;
-  max-width:700px;
-  color:#d5dfd7;
-  font-size:14px;
-  line-height:1.9;
-}
-
-.about-points{
-  margin-top:35px;
   display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:end;
+  margin-bottom:30px;
 }
 
-.about-point{
-  padding:15px 20px;
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:15px;
-  font-size:11px;
+.shop-head small{
+  color:var(--brown);
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:700;
 }
 
-</style>
-
-<div class="about-inner">
-
-  <small>
-    ABOUT NATURE'S UDYOG
-  </small>
-
-  <h2>
-    Rooted in Nature.
-  </h2>
-
-  <p>
-    Nature's Udyog brings together a
-    thoughtfully selected range of natural
-    products with a simple philosophy —
-    keeping nature at the heart of what we do.
-  </p>
-
-  <div class="about-points">
-
-    <div class="about-point">
-      🌿 Natural Focus
-    </div>
-
-    <div class="about-point">
-      🤝 Customer First
-    </div>
-
-    <div class="about-point">
-      📦 Easy Ordering
-    </div>
-
-  </div>
-
-</div>
-
-  </section>
-  <section class="contact" id="contact">
-
-<style>
-
-.contact{
-  padding:70px 7%;
-  background:#f7f7f0;
+.shop-head h2{
+  margin-top:8px;
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  color:var(--green);
 }
 
-.contact-box{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-}
-
-.contact-box h2{
-  font-family:Georgia,serif;
-  font-size:38px;
-  color:#092719;
-}
-
-.contact-box p{
-  margin-top:12px;
-  color:#707970;
-  font-size:13px;
-}
-
-.contact-info{
-  margin-top:30px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-}
-
-.contact-item{
-  background:white;
-  padding:22px 12px;
-  border-radius:18px;
-  border:1px solid #e3e9df;
-}
-
-.contact-item b{
-  display:block;
-  color:#123d27;
-  font-size:12px;
-  margin-bottom:8px;
-}
-
-.contact-item span{
+.shop-head p{
+  max-width:330px;
   color:#777;
   font-size:11px;
+  line-height:1.6;
 }
 
-@media(max-width:650px){
+.product-grid{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:
+  repeat(3,1fr);
+  gap:18px;
+}
 
-  .contact-info{
-    grid-template-columns:1fr;
+@media(max-width:700px){
+
+  .shop{
+    padding:50px 18px;
+  }
+
+  .shop-head{
+    display:block;
+  }
+
+  .shop-head h2{
+    font-size:32px;
+  }
+
+  .shop-head p{
+    margin-top:10px;
+  }
+
+  .product-grid{
+    grid-template-columns:
+    repeat(2,1fr);
+    gap:10px;
   }
 
 }
 
 </style>
 
-<div class="contact-box">
+<section class="shop" id="shop">
 
-  <h2>
-    Let's Connect
-  </h2>
+  <div class="shop-head">
 
-  <p>
-    Have a question or want to place an order?
-    We're here to help.
-  </p>
+    <div>
 
-  <div class="contact-info">
+      <small>
+        CURATED FOR YOU
+      </small>
 
-    <div class="contact-item">
-      <b>📞 Call / WhatsApp</b>
-      <span>7978819477</span>
+      <h2>
+        Our Collection
+      </h2>
+
     </div>
 
-    <div class="contact-item">
-      <b>✉️ Email</b>
-      <span>naturesudyog08@gmail.com</span>
-    </div>
-
-    <div class="contact-item">
-      <b>📍 Address</b>
-      <span>
-        AM-2, Basanti Colony,<br>
-        Raurkela, Sundargarh, Odisha
-      </span>
-    </div>
+    <p>
+      Natural ingredients and everyday
+      essentials, thoughtfully brought
+      together by Nature's Udyog.
+    </p>
 
   </div>
 
-</div>
-
-  </section>
-  <style>
-
-.whatsapp-order{
-  margin-top:30px;
-}
-
-.whatsapp-order a{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  padding:15px 24px;
-  border-radius:14px;
-  background:#25D366;
-  color:white;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:800;
-  box-shadow:0 12px 25px rgba(37,211,102,.20);
-  transition:.3s;
-}
-
-.whatsapp-order a:hover{
-  transform:translateY(-3px);
-}
-
-</style>
-
-<div class="whatsapp-order">
-
-  <a
-    href="https://wa.me/917978819477?text=Hello%20Nature's%20Udyog,%20I%20want%20to%20place%20an%20order."
-    target="_blank">
-
-    💬 Order on WhatsApp →
-
-  </a>
-
-</div>
+  <div class="product-grid">
