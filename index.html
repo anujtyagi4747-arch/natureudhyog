@@ -1056,3 +1056,1117 @@ button{
   </div>
 
 </section>
+<style>
+.more-products{
+  padding:10px 5% 75px;
+}
+
+.more-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.more-title small{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.more-title h2{
+  margin-top:8px;
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  color:var(--green);
+}
+
+.more-title p{
+  margin:10px auto 0;
+  max-width:500px;
+  font-size:11px;
+  line-height:1.7;
+  color:#667067;
+}
+
+.more-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.more-card{
+  background:#fff;
+  border:1px solid #e8e5da;
+  overflow:hidden;
+  transition:.35s ease;
+}
+
+.more-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 40px rgba(24,59,39,.10);
+}
+
+.more-img{
+  height:260px;
+  overflow:hidden;
+  background:#eee9da;
+}
+
+.more-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s ease;
+}
+
+.more-card:hover .more-img img{
+  transform:scale(1.06);
+}
+
+.more-info{
+  padding:18px;
+}
+
+.more-info small{
+  color:#a4874e;
+  font-size:9px;
+  letter-spacing:1.5px;
+  font-weight:700;
+}
+
+.more-info h3{
+  margin-top:7px;
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  color:var(--green);
+}
+
+.more-info p{
+  margin-top:7px;
+  font-size:10px;
+  line-height:1.6;
+  color:#687269;
+}
+
+.more-bottom{
+  margin-top:35px;
+  text-align:center;
+}
+
+.more-bottom span{
+  display:inline-block;
+  padding:12px 20px;
+  border:1px solid #cfc9b9;
+  font-size:9px;
+  letter-spacing:1.5px;
+  font-weight:700;
+  color:var(--green);
+}
+
+@media(max-width:600px){
+  .more-products{
+    padding:5px 18px 55px;
+  }
+
+  .more-title h2{
+    font-size:30px;
+  }
+
+  .more-grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .more-img{
+    height:240px;
+  }
+}
+</style>
+
+<section class="more-products">
+
+  <div class="more-title">
+    <small>MORE FROM NATURE'S UDYOG</small>
+    <h2>Pure. Simple. Natural.</h2>
+    <p>
+      Carefully selected natural ingredients inspired by traditional Indian wellness
+      and everyday nutrition.
+    </p>
+  </div>
+
+  <div class="more-grid">
+
+    <div class="more-card">
+      <div class="more-img">
+        <img
+          src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=900&q=85"
+          alt="Vathar Churn Potli">
+      </div>
+
+      <div class="more-info">
+        <small>HERBAL CARE</small>
+        <h3>Vathar Churn Potli</h3>
+        <p>
+          A traditional herbal blend prepared for a simple and natural wellness routine.
+        </p>
+      </div>
+    </div>
+
+    <div class="more-card">
+      <div class="more-img">
+        <img
+          src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=900&q=85"
+          alt="Flax Seeds">
+      </div>
+
+      <div class="more-info">
+        <small>NUTRITION SUPERFOOD</small>
+        <h3>Flax Seeds</h3>
+        <p>
+          Naturally rich seeds that can be easily added to everyday meals and nutrition.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="more-bottom">
+    <span>11+ NATURAL PRODUCTS • MADE WITH CARE</span>
+  </div>
+
+</section>
+
+</div>
+</section>
+  <style>
+.story{
+  margin:0 5% 70px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:480px;
+  background:#e9e5d8;
+  overflow:hidden;
+}
+
+.story-image{
+  position:relative;
+  min-height:480px;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-badge{
+  position:absolute;
+  left:22px;
+  bottom:22px;
+  background:#fff;
+  padding:14px 18px;
+  font-size:9px;
+  letter-spacing:1.5px;
+  color:var(--green);
+  font-weight:700;
+}
+
+.story-content{
+  padding:55px 45px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.story-content small{
+  color:var(--gold);
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.story-content h2{
+  margin-top:12px;
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  line-height:1.1;
+  color:var(--green);
+}
+
+.story-content p{
+  margin-top:18px;
+  color:#59645b;
+  font-size:12px;
+  line-height:1.8;
+}
+
+.story-points{
+  margin-top:25px;
+  display:grid;
+  gap:14px;
+}
+
+.story-point{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:10px;
+  color:var(--green);
+  font-weight:600;
+}
+
+.story-point i{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-style:normal;
+  color:var(--gold);
+}
+
+.story-btn{
+  width:max-content;
+  margin-top:28px;
+  padding:13px 20px;
+  border:1px solid var(--green);
+  background:transparent;
+  color:var(--green);
+  font-size:9px;
+  letter-spacing:1.2px;
+  font-weight:700;
+}
+
+.story-btn:hover{
+  background:var(--green);
+  color:#fff;
+}
+
+@media(max-width:700px){
+  .story{
+    margin:0 18px 55px;
+    display:block;
+  }
+
+  .story-image{
+    min-height:330px;
+  }
+
+  .story-content{
+    padding:35px 25px 40px;
+  }
+
+  .story-content h2{
+    font-size:34px;
+  }
+}
+</style>
+
+<section class="story" id="about">
+
+  <div class="story-image">
+    <img
+      src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=1100&q=85"
+      alt="Natural herbs and plants">
+
+    <div class="story-badge">
+      ROOTED IN NATURE • INSPIRED BY INDIA
+    </div>
+  </div>
+
+  <div class="story-content">
+
+    <small>OUR STORY</small>
+
+    <h2>Nature, made part of everyday life.</h2>
+
+    <p>
+      At Nature's Udyog, we believe that good products begin with good
+      ingredients. Our range brings together natural oils, herbs, seeds,
+      powders and everyday essentials inspired by India's rich traditions.
+    </p>
+
+    <p>
+      From carefully selected ingredients to thoughtful manufacturing,
+      our focus is simple — purity, consistency and products that fit
+      naturally into everyday life.
+    </p>
+
+    <div class="story-points">
+
+      <div class="story-point">
+        <i>✓</i>
+        Carefully selected natural ingredients
+      </div>
+
+      <div class="story-point">
+        <i>✓</i>
+        Thoughtful manufacturing process
+      </div>
+
+      <div class="story-point">
+        <i>✓</i>
+        Quality-focused natural products
+      </div>
+
+    </div>
+
+    <button class="story-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      CONNECT WITH US →
+    </button>
+
+  </div>
+
+</section>
+<style>
+/* PRODUCT QUICK VIEW + CART */
+.quick-view{
+  position:fixed;
+  inset:0;
+  background:rgba(12,28,18,.72);
+  backdrop-filter:blur(7px);
+  z-index:9998;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.quick-view.active{
+  display:flex;
+}
+
+.quick-box{
+  width:min(720px,100%);
+  background:#f8f7f2;
+  border-radius:24px 24px 0 0;
+  padding:25px;
+  position:relative;
+  animation:slideUp .35s ease;
+}
+
+@keyframes slideUp{
+  from{transform:translateY(100%);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+.quick-close{
+  position:absolute;
+  right:18px;
+  top:15px;
+  width:34px;
+  height:34px;
+  border:0;
+  border-radius:50%;
+  background:#e8e5da;
+  color:var(--green);
+  font-size:18px;
+}
+
+.quick-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  align-items:center;
+}
+
+.quick-image{
+  height:300px;
+  overflow:hidden;
+  background:#eee9da;
+}
+
+.quick-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.quick-info small{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-weight:700;
+}
+
+.quick-info h3{
+  margin-top:8px;
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  color:var(--green);
+}
+
+.quick-info p{
+  margin-top:12px;
+  color:#657067;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.quick-price{
+  margin-top:16px;
+  font-size:20px;
+  font-weight:700;
+  color:var(--green);
+}
+
+.quick-buy{
+  margin-top:18px;
+  width:100%;
+  padding:14px;
+  border:0;
+  background:var(--green);
+  color:#fff;
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:700;
+}
+
+.cart-toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translate(-50%,120px);
+  z-index:10000;
+  background:var(--green);
+  color:#fff;
+  padding:13px 20px;
+  border-radius:30px;
+  font-size:10px;
+  box-shadow:0 12px 35px rgba(0,0,0,.2);
+  transition:.35s ease;
+}
+
+.cart-toast.show{
+  transform:translate(-50%,0);
+}
+
+@media(max-width:600px){
+  .quick-layout{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .quick-box{
+    padding:20px;
+  }
+
+  .quick-image{
+    height:230px;
+  }
+
+  .quick-info h3{
+    font-size:26px;
+  }
+}
+</style>
+
+<div class="quick-view" id="quickView">
+
+  <div class="quick-box">
+
+    <button class="quick-close" onclick="closeQuickView()">×</button>
+
+    <div class="quick-layout">
+
+      <div class="quick-image">
+        <img id="quickImage" src="" alt="Product">
+      </div>
+
+      <div class="quick-info">
+        <small>NATURE'S UDYOG</small>
+
+        <h3 id="quickName">Product</h3>
+
+        <p id="quickDescription">
+          Natural product, thoughtfully selected for everyday use.
+        </p>
+
+        <div class="quick-price" id="quickPrice">₹0</div>
+
+        <button class="quick-buy" onclick="quickAddToCart()">
+          ADD TO CART →
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="cart-toast" id="cartToast">
+  ✓ Added to your cart
+</div>
+
+<script>
+let selectedProduct = {
+  name:"",
+  price:"",
+  image:"",
+  description:""
+};
+
+let natureCart = [];
+
+function openQuickView(name,price,image,description){
+
+  selectedProduct = {
+    name:name,
+    price:price,
+    image:image,
+    description:description
+  };
+
+  document.getElementById("quickName").textContent = name;
+  document.getElementById("quickPrice").textContent = price;
+  document.getElementById("quickImage").src = image;
+  document.getElementById("quickDescription").textContent =
+    description || "Natural product, thoughtfully selected for everyday use.";
+
+  document.getElementById("quickView").classList.add("active");
+  document.body.style.overflow="hidden";
+}
+
+function closeQuickView(){
+  document.getElementById("quickView").classList.remove("active");
+  document.body.style.overflow="";
+}
+
+function quickAddToCart(){
+  addNatureProduct(
+    selectedProduct.name,
+    selectedProduct.price,
+    selectedProduct.image
+  );
+
+  closeQuickView();
+}
+
+function addNatureProduct(name,price,image){
+
+  natureCart.push({
+    name:name,
+    price:price,
+    image:image
+  });
+
+  showCartToast();
+
+  updateCartCount();
+}
+
+function updateCartCount(){
+
+  let count = document.getElementById("cartCount");
+
+  if(!count){
+    count = document.createElement("span");
+    count.id="cartCount";
+
+    count.style.position="absolute";
+    count.style.top="-7px";
+    count.style.right="-7px";
+    count.style.width="18px";
+    count.style.height="18px";
+    count.style.borderRadius="50%";
+    count.style.background="#9b5635";
+    count.style.color="#fff";
+    count.style.fontSize="9px";
+    count.style.display="flex";
+    count.style.alignItems="center";
+    count.style.justifyContent="center";
+
+    let cartIcon =
+      document.querySelector(".nav .cart") ||
+      document.querySelector("[data-cart]");
+
+    if(cartIcon){
+      cartIcon.style.position="relative";
+      cartIcon.appendChild(count);
+    }
+  }
+
+  count.textContent = natureCart.length;
+}
+
+function showCartToast(){
+
+  let toast=document.getElementById("cartToast");
+
+  toast.classList.add("show");
+
+  setTimeout(function(){
+    toast.classList.remove("show");
+  },1800);
+}
+
+document.getElementById("quickView").addEventListener("click",function(e){
+
+  if(e.target === this){
+    closeQuickView();
+  }
+
+});
+      </script>
+      <style>
+/* CONTACT + WHATSAPP ORDER */
+.contact{
+  margin:0 5% 70px;
+  background:var(--green);
+  color:#fff;
+  padding:55px 45px;
+  position:relative;
+  overflow:hidden;
+}
+
+.contact::before{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:50%;
+  right:-120px;
+  top:-120px;
+}
+
+.contact-head{
+  position:relative;
+  z-index:2;
+  max-width:560px;
+}
+
+.contact-head small{
+  color:#d6bd7e;
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.contact-head h2{
+  margin-top:10px;
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  line-height:1.1;
+}
+
+.contact-head p{
+  margin-top:14px;
+  color:#dce4dc;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.contact-grid{
+  position:relative;
+  z-index:2;
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.contact-card{
+  padding:20px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);
+}
+
+.contact-card span{
+  display:block;
+  color:#d6bd7e;
+  font-size:8px;
+  letter-spacing:1.5px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.contact-card strong{
+  font-size:11px;
+  font-weight:500;
+  line-height:1.6;
+}
+
+.whatsapp-order{
+  margin-top:30px;
+  position:relative;
+  z-index:2;
+}
+
+.whatsapp-order button{
+  border:0;
+  background:#fff;
+  color:var(--green);
+  padding:15px 24px;
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:700;
+}
+
+@media(max-width:650px){
+  .contact{
+    margin:0 18px 55px;
+    padding:38px 24px;
+  }
+
+  .contact-head h2{
+    font-size:32px;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .contact-card{
+    padding:16px;
+  }
+}
+</style>
+
+<section class="contact" id="contact">
+
+  <div class="contact-head">
+    <small>LET'S CONNECT</small>
+
+    <h2>Bring nature into your everyday.</h2>
+
+    <p>
+      Have a product enquiry, bulk requirement or want to know more
+      about our natural products? Connect with Nature's Udyog directly.
+    </p>
+  </div>
+
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <span>CALL / WHATSAPP</span>
+      <strong>7978819477</strong>
+    </div>
+
+    <div class="contact-card">
+      <span>ALTERNATE CONTACT</span>
+      <strong>9437220312</strong>
+    </div>
+
+    <div class="contact-card">
+      <span>EMAIL</span>
+      <strong>naturesudyog08@gmail.com</strong>
+    </div>
+
+    <div class="contact-card">
+      <span>ADDRESS</span>
+      <strong>
+        AM-2, Basanti Colony,<br>
+        Raurkela, Sundargarh,<br>
+        ODISHA
+      </strong>
+    </div>
+
+  </div>
+
+  <div class="whatsapp-order">
+    <button onclick="sendNatureWhatsApp()">
+      START A WHATSAPP ENQUIRY →
+    </button>
+  </div>
+
+</section>
+
+<script>
+function sendNatureWhatsApp(){
+
+  let message =
+    "Hello Nature's Udyog,%0A%0A" +
+    "I would like to enquire about your natural products.%0A" +
+    "Please share product details, availability and pricing.%0A%0A" +
+    "Thank you.";
+
+  window.open(
+    "https://wa.me/917978819477?text="+message,
+    "_blank"
+  );
+}
+</script>
+<style>
+/* FINAL POLISH + FOOTER */
+
+.footer{
+  background:#10291b;
+  color:#fff;
+  padding:55px 5% 25px;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:45px;
+  padding-bottom:40px;
+}
+
+.footer-brand h2{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+}
+
+.footer-brand h2 span{
+  color:#c7a85f;
+}
+
+.footer-brand p{
+  margin-top:14px;
+  max-width:340px;
+  color:#bdc9bf;
+  font-size:10px;
+  line-height:1.8;
+}
+
+.footer-col h4{
+  font-size:9px;
+  letter-spacing:1.8px;
+  color:#d5ba72;
+  margin-bottom:16px;
+}
+
+.footer-col a{
+  display:block;
+  color:#d7dfd8;
+  text-decoration:none;
+  font-size:10px;
+  margin-bottom:11px;
+}
+
+.footer-col a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  color:#9eada2;
+  font-size:9px;
+}
+
+.scroll-top{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  z-index:9000;
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+  font-size:16px;
+}
+
+@media(max-width:650px){
+
+  .footer{
+    padding:42px 22px 22px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:30px 20px;
+  }
+
+  .footer-brand{
+    grid-column:1/-1;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    line-height:1.6;
+  }
+}
+
+/* SOFT PAGE ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.hero-content{
+  animation:fadeUp 1s ease both;
+}
+</style>
+
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <div class="footer-brand">
+
+      <h2>Nature's <span>Udyog</span></h2>
+
+      <p>
+        Natural products inspired by India's rich traditions.
+        Thoughtfully selected ingredients, simple products
+        and a commitment to quality.
+      </p>
+
+    </div>
+
+    <div class="footer-col">
+
+      <h4>QUICK LINKS</h4>
+
+      <a href="#shop">Shop Products</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Contact Us</a>
+      <a href="javascript:void(0)" onclick="sendNatureWhatsApp()">
+        WhatsApp Enquiry
+      </a>
+
+    </div>
+
+    <div class="footer-col">
+
+      <h4>OUR WORLD</h4>
+
+      <a href="#shop">Natural Oils</a>
+      <a href="#shop">Herbal Powders</a>
+      <a href="#shop">Seeds & Nutrition</a>
+      <a href="#shop">Natural Essentials</a>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 Nature's Udyog. All rights reserved.
+    </span>
+
+    <span>
+      Pure • Natural • Thoughtfully Made
+    </span>
+
+  </div>
+
+</footer>
+
+<button
+  class="scroll-top"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  ↑
+</button>
+
+<script>
+
+/* NAVIGATION */
+
+document.querySelectorAll('a[href^="#"]').forEach(function(link){
+
+  link.addEventListener("click",function(e){
+
+    let target=document.querySelector(this.getAttribute("href"));
+
+    if(target){
+
+      e.preventDefault();
+
+      target.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    }
+
+  });
+
+});
+
+
+/* ADD QUICK VIEW TO EXISTING PRODUCT CARDS */
+
+document.querySelectorAll(".product").forEach(function(card){
+
+  let title=card.querySelector("h3");
+  let price=card.querySelector(".price");
+  let image=card.querySelector("img");
+
+  if(!title || !image) return;
+
+  let name=title.innerText;
+  let amount=price ? price.innerText : "Enquire";
+
+  let button=card.querySelector(".add-btn");
+
+  if(button){
+
+    button.addEventListener("click",function(){
+
+      addNatureProduct(
+        name,
+        amount,
+        image.src
+      );
+
+    });
+
+  }
+
+});
+
+
+/* MAKE FEATURED BUTTON SCROLL TO STORY */
+
+document.querySelectorAll(".featured-content button").forEach(function(btn){
+
+  btn.addEventListener("click",function(){
+
+    let story=document.getElementById("about");
+
+    if(story){
+      story.scrollIntoView({
+        behavior:"smooth"
+      });
+    }
+
+  });
+
+});
+
+
+/* CLOSE QUICK VIEW WITH ESC */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+    closeQuickView();
+  }
+
+});
+
+
+/* IMAGE FALLBACK */
+
+document.querySelectorAll("img").forEach(function(img){
+
+  img.addEventListener("error",function(){
+
+    this.style.background="#eee9da";
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
